@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">E Commerce App</string>
+    <string name="store">Store</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="offers">Offers</string>
+    <string name="profile">Profile</string>
+    <string name="e_mail">E-mail</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="plus_sign">+</string>
+    <string name="minus_sign">-</string>
+    <string name="default_number_of_books">0</string>
+    <string name="image_of_book">Image of Book</string>
+</resources>
