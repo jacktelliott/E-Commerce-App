@@ -28,10 +28,11 @@ class BookStoreFragment : Fragment(){
     }
 
     private fun setupOnClickListener(container: ViewGroup?) {
-//        val view:View = LayoutInflater.from(container?.context).inflate(R.layout.item_book, container, false)
-//        var binding: ItemBookBinding = ItemBookBinding.bind(view)
-//        binding.imageButtonAddToCart.setOnClickListener {
-//        }
+        val view:View = LayoutInflater.from(container?.context).inflate(R.layout.item_book, container, false)
+        var binding: ItemBookBinding = ItemBookBinding.bind(view)
+        binding.imageButtonAddToCart.setOnClickListener {
+
+        }
     }
 
     private fun setupView() {

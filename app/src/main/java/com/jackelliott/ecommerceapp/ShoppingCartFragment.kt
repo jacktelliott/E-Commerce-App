@@ -25,7 +25,6 @@ class ShoppingCartFragment : Fragment() {
     }
 
     private fun setupList() {
-
     }
 
 }
