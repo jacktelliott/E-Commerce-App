@@ -15,5 +15,8 @@ data class Subscriber (
     val name: String,
 
     @ColumnInfo (name = "subscriber_email")
-    val email: String
+    val email: String,
+
+    @ColumnInfo (name = "subscriber_password")
+    val password: String
         )
