@@ -1,9 +1,11 @@
-package com.jackelliott.ecommerceapp
+package com.jackelliott.ecommerceapp.store
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.jackelliott.ecommerceapp.Constants
+import com.jackelliott.ecommerceapp.R
 import com.jackelliott.ecommerceapp.databinding.ItemBookBinding
 import java.text.DecimalFormat
 

@@ -1,5 +1,7 @@
 package com.jackelliott.ecommerceapp
 
+import com.jackelliott.ecommerceapp.store.BookEntry
+
 object Constants {
 
     val BOOKS_IN_STOCK = arrayOf(

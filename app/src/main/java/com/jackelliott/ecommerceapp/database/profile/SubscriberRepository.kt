@@ -1,4 +1,7 @@
-package com.jackelliott.ecommerceapp.database
+package com.jackelliott.ecommerceapp.database.profile
+
+import com.jackelliott.ecommerceapp.database.profile.Subscriber
+import com.jackelliott.ecommerceapp.database.profile.SubscriberDAO
 
 class SubscriberRepository (private val dao: SubscriberDAO) {
 

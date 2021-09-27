@@ -10,4 +10,10 @@
     <string name="minus_sign">-</string>
     <string name="default_number_of_books">0</string>
     <string name="image_of_book">Image of Book</string>
+    <string name="create_a_new_account">Create a New Account</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
 </resources>

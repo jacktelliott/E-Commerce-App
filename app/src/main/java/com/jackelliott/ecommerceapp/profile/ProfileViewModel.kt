@@ -1,14 +1,14 @@
-package com.jackelliott.ecommerceapp
+package com.jackelliott.ecommerceapp.profile
 
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jackelliott.ecommerceapp.database.Subscriber
-import com.jackelliott.ecommerceapp.database.SubscriberRepository
+import com.jackelliott.ecommerceapp.database.profile.Subscriber
+import com.jackelliott.ecommerceapp.database.profile.SubscriberRepository
 import kotlinx.coroutines.launch
 
-class SubscriberViewModel(private val repository: SubscriberRepository) : ViewModel() {
+class ProfileViewModel(private val repository: SubscriberRepository) : ViewModel() {
 
     val subscribers = repository.subscribers
 

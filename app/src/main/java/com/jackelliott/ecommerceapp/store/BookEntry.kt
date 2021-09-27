@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp
+package com.jackelliott.ecommerceapp.store
 
 import androidx.annotation.DrawableRes
 
