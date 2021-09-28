@@ -11,6 +11,8 @@ interface ProductDAO {
     @Update
     suspend fun addProduct(product: Product)
 
+    suspend fun removeProduct(Product: Product)
+
     @Query("SELECT * FROM product_data_table")
     fun getAllProducts(): LiveData<List<Product>>
 }
