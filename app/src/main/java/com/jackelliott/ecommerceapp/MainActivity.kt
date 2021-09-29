@@ -7,7 +7,6 @@ import androidx.fragment.app.commit
 import com.google.android.material.navigation.NavigationBarView
 import com.jackelliott.ecommerceapp.cart.ShoppingCartFragment
 import com.jackelliott.ecommerceapp.databinding.ActivityMainBinding
-import com.jackelliott.ecommerceapp.offers.OffersFragment
 import com.jackelliott.ecommerceapp.profile.ProfileViewModel
 import com.jackelliott.ecommerceapp.profile.UserProfileFragment
 import com.jackelliott.ecommerceapp.store.BookStoreFragment
@@ -33,9 +32,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         } else if (item.itemId == R.id.nav_shopping_cart) {
             onShoppingCartClicked()
             return true
-        } else if (item.itemId == R.id.nav_offers) {
-            onOffersClicked()
-            return true
         } else if (item.itemId == R.id.nav_profile) {
             onProfileClicked()
             return true
@@ -53,12 +49,6 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     private fun onShoppingCartClicked() {
         supportFragmentManager.commit {
             replace(R.id.frame_content, ShoppingCartFragment())
-        }
-    }
-
-    private fun onOffersClicked() {
-        supportFragmentManager.commit {
-            replace(R.id.frame_content, OffersFragment())
         }
     }
 

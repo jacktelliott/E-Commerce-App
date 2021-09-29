@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp.database.cart
+package com.jackelliott.ecommerceapp.database.product
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
