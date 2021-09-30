@@ -7,7 +7,7 @@ import java.lang.IllegalArgumentException
 
 class ProfileViewModelFactory(private val repository: SubscriberRepository) : ViewModelProvider.Factory{
 
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
             return ProfileViewModel(repository) as T
         }

@@ -10,7 +10,7 @@ interface ProductDAO {
     @Update
     suspend fun saveProducts(products: List<Product>)
 
-    @Delete
+    @Query("DELETE FROM product_data_table")
     suspend fun deleteAllProducts()
 
     @Query("SELECT * FROM product_data_table")

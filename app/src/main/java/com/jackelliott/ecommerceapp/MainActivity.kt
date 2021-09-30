@@ -3,8 +3,12 @@ package com.jackelliott.ecommerceapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.commit
 import com.google.android.material.navigation.NavigationBarView
+import com.jackelliott.ecommerceapp.R
+import com.jackelliott.ecommerceapp.R.layout.activity_main
 import com.jackelliott.ecommerceapp.cart.ShoppingCartFragment
 import com.jackelliott.ecommerceapp.databinding.ActivityMainBinding
 import com.jackelliott.ecommerceapp.profile.ProfileViewModel

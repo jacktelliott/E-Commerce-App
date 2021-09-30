@@ -12,13 +12,10 @@ class ProfileViewModel(private val repository: SubscriberRepository) : ViewModel
 
     val subscribers = repository.subscribers
 
-    @Bindable
     val inputName = MutableLiveData<String>()
 
-    @Bindable
     val inputEmail = MutableLiveData<String>()
 
-    @Bindable
     val inputPassword = MutableLiveData<String>()
 
     fun insert(subscriber: Subscriber) = viewModelScope.launch {
