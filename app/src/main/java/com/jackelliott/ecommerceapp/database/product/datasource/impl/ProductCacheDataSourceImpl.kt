@@ -1,6 +1,7 @@
-package com.jackelliott.ecommerceapp.database.product.datasource
+package com.jackelliott.ecommerceapp.database.product.datasource.impl
 
 import com.jackelliott.ecommerceapp.database.product.Product
+import com.jackelliott.ecommerceapp.database.product.datasource.ProductCacheDataSource
 
 class ProductCacheDataSourceImpl : ProductCacheDataSource {
 

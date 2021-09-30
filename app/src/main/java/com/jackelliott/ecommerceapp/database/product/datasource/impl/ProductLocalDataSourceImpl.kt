@@ -1,7 +1,8 @@
-package com.jackelliott.ecommerceapp.database.product.datasource
+package com.jackelliott.ecommerceapp.database.product.datasource.impl
 
 import com.jackelliott.ecommerceapp.database.product.Product
 import com.jackelliott.ecommerceapp.database.product.ProductDAO
+import com.jackelliott.ecommerceapp.database.product.datasource.ProductLocalDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
