@@ -1,5 +1,6 @@
 package com.jackelliott.ecommerceapp.database.product
 
+import android.media.Image
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,12 +9,24 @@ import androidx.room.PrimaryKey
 data class Product (
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "product_id")
+    @ColumnInfo(name = "id")
     val id: Int,
 
-    @ColumnInfo (name = "product_name")
-    val name: String,
+    @ColumnInfo (name = "title")
+    val title: String,
 
-    @ColumnInfo (name = "product_quantity")
-    val quantity: Int,
+    @ColumnInfo (name = "price")
+    val price: Float,
+
+    @ColumnInfo (name = "description")
+    val description: String,
+
+//    @ColumnInfo (name = "category")
+//    val category: String,
+
+    @ColumnInfo (name = "image")
+    val image: Int,
+
+    @ColumnInfo (name = "rating")
+    val rating: Float
         )

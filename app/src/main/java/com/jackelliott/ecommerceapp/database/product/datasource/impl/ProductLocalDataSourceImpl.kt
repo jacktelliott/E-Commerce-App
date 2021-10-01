@@ -6,8 +6,9 @@ import com.jackelliott.ecommerceapp.database.product.datasource.ProductLocalData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ProductLocalDataSourceImpl (private val productDao: ProductDAO) : ProductLocalDataSource {
+class ProductLocalDataSourceImpl @Inject constructor(private val productDao: ProductDAO) : ProductLocalDataSource {
     override suspend fun getProductsFromDB(): List<Product> {
         return productDao.getAllProducts()
     }

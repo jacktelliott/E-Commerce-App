@@ -1,19 +1,16 @@
 package com.jackelliott.ecommerceapp
 
+import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.commit
 import com.google.android.material.navigation.NavigationBarView
-import com.jackelliott.ecommerceapp.R
-import com.jackelliott.ecommerceapp.R.layout.activity_main
 import com.jackelliott.ecommerceapp.cart.ShoppingCartFragment
 import com.jackelliott.ecommerceapp.databinding.ActivityMainBinding
 import com.jackelliott.ecommerceapp.profile.ProfileViewModel
 import com.jackelliott.ecommerceapp.profile.UserProfileFragment
-import com.jackelliott.ecommerceapp.store.BookStoreFragment
+import com.jackelliott.ecommerceapp.store.StoreFragment
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
@@ -26,6 +23,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        application
         binding.bottomNav.setOnItemSelectedListener(this)
     }
 
@@ -46,7 +44,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
     private fun onBookStoreClicked() {
         supportFragmentManager.commit {
-            replace(R.id.frame_content, BookStoreFragment())
+            replace(R.id.frame_content, StoreFragment())
         }
     }
 
@@ -61,4 +59,9 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
             replace(R.id.frame_content, UserProfileFragment())
         }
     }
+
+    fun getApplicaton() :Application {
+        return application
+    }
+
 }

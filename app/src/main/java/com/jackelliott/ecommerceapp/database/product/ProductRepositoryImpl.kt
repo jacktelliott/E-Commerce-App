@@ -5,8 +5,10 @@ import com.jackelliott.ecommerceapp.database.product.datasource.ProductCacheData
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductLocalDataSource
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductRemoteDataSource
 import java.lang.Exception
+import javax.inject.Inject
 
-class ProductRepositoryImpl(
+
+class ProductRepositoryImpl @Inject constructor(
     private val productRemoteDataSource: ProductRemoteDataSource,
     private val productLocalDataSource: ProductLocalDataSource,
     private val productCacheDataSource: ProductCacheDataSource
@@ -16,6 +18,8 @@ class ProductRepositoryImpl(
         return getProductsFromCache()
     }
 
+    //Takes products from the Remote Data Source (the url) and saves them to the DB and the Cache
+    //In this case, the RDS will not be updating, so it is not necessary to call this more than once
     override suspend fun updateProducts(): List<Product>? {
         val newListOfProduct = getProductsFromAPI()
         productLocalDataSource.clearAll()
@@ -31,10 +35,10 @@ class ProductRepositoryImpl(
             val response = productRemoteDataSource.getProducts()
             val body = response.body()
             if (body != null) {
-//                productList = body.products
+                productList = body.products
             }
         } catch (exception: Exception) {
-            Log.i("MyTag", exception.message.toString())
+            Log.i("getProductsFromAPI", exception.message.toString())
         }
         if (productList.size > 0) {
             return productList
@@ -50,7 +54,7 @@ class ProductRepositoryImpl(
         try {
             productList = productCacheDataSource.getProductsFromCache()
         } catch (exception: Exception) {
-            Log.i("MyTag", exception.message.toString())
+            Log.i("getProductsFromCache", exception.message.toString())
         }
         if (productList.size > 0) {
             return productList
@@ -66,7 +70,7 @@ class ProductRepositoryImpl(
         try {
             productList = productLocalDataSource.getProductsFromDB()
         } catch (exception: Exception) {
-            Log.i("MyTag", exception.message.toString())
+            Log.i("getProductsFromDB", exception.message.toString())
         }
         if (productList.size > 0) {
             return productList

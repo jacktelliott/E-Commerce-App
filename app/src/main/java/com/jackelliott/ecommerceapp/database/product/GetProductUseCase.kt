@@ -1,5 +1,7 @@
 package com.jackelliott.ecommerceapp.database.product
 
-class GetProductUseCase (private val productRepository: ProductRepository) {
+import javax.inject.Inject
+
+class GetProductUseCase @Inject constructor(private val productRepository: ProductRepository) {
     suspend fun execute(): List<Product>? = productRepository.getProducts()
 }

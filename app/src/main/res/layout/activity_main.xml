@@ -8,7 +8,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frame_content"
-        android:name="com.jackelliott.ecommerceapp.store.BookStoreFragment"
+        android:name="com.jackelliott.ecommerceapp.store.StoreFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
