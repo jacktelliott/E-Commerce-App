@@ -22,7 +22,8 @@ class ProductEntryAdapter(
     private val context: Context?
 ) : RecyclerView.Adapter<ProductEntryAdapter.BookEntryViewHolder>() {
 
-    private lateinit var productEntryList: List<ProductEntry>
+
+    private var productEntryList: List<ProductEntry> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookEntryViewHolder {
         val view: View =
@@ -31,8 +32,8 @@ class ProductEntryAdapter(
     }
 
     override fun onBindViewHolder(holder: BookEntryViewHolder, position: Int) {
-        convertPlToPel()
-        holder.bind(productEntryList[position], context)
+//        convertPlToPel()
+        holder.bind(productList[position], context)
     }
 
     override fun getItemCount(): Int {
@@ -45,7 +46,7 @@ class ProductEntryAdapter(
             productEntryList[product.id].description = product.description
             productEntryList[product.id].price = product.price
             productEntryList[product.id].image = product.image
-            productEntryList[product.id].rating = product.rating
+//            productEntryList[product.id].rating = product.rating
         }
         return productEntryList
     }
@@ -54,7 +55,7 @@ class ProductEntryAdapter(
 
         private var binding: ItemProductBinding = ItemProductBinding.bind(itemView)
 
-        fun bind(product: ProductEntry, context: Context?) {
+        fun bind(product: Product, context: Context?) {
 //            binding.textViewBookTitle.text = book.title
 //            binding.textViewAuthor.text = book.author
 //            binding.ratingBarBook.rating = book.rating
@@ -64,7 +65,7 @@ class ProductEntryAdapter(
 //            binding.imageViewBook.setImageResource(book.image)
             binding.textViewTitle.text = product.title
             binding.textViewDescription.text = product.description
-            binding.ratingBarProduct.rating = product.rating
+//            binding.ratingBarProduct.rating = product.rating
             val df = DecimalFormat("#,###.00")
             val roundedPrice = df.format(product.price)
             binding.textViewPrice.text = "$$roundedPrice"

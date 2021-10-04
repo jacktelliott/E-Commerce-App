@@ -36,7 +36,7 @@ class ProductRepositoryImpl @Inject constructor(
             val response = productRemoteDataSource.getProducts()
             val body = response.body()
             if (body != null) {
-                productList = body.products
+                productList = body
             }
             if (productList.isNotEmpty()) {
                 return productList
@@ -73,7 +73,7 @@ class ProductRepositoryImpl @Inject constructor(
             if (productList.isNotEmpty()) {
                 return productList
             } else {
-                productList = getProductsFromDB()
+                productList = getProductsFromAPI()
                 productLocalDataSource.saveProductsToDB(productList)
             }
         } catch (exception: Exception) {

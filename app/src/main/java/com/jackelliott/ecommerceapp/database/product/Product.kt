@@ -30,8 +30,8 @@ data class Product (
     @ColumnInfo (name = "image")
     val image: String,
 
-    @ColumnInfo (name = "rating")
-    val rating: Float,
+//    @ColumnInfo (name = "rating")
+//    val rating: Float,
 
     @ColumnInfo (name = "quantity")
     val quantity: Int = 0
