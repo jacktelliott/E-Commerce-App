@@ -15,7 +15,7 @@ class DatabaseModule(private val application: Application) {
     @Singleton
     @Provides
     fun provideProductDatabase() : FsApiDatabase {
-        return Room.databaseBuilder(application, FsApiDatabase::class.java, "fsapiclient")
+        return Room.databaseBuilder(application, FsApiDatabase::class.java, "product_data_table")
             .fallbackToDestructiveMigration()
             .build()
     }

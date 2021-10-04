@@ -1,6 +1,7 @@
 package com.jackelliott.ecommerceapp
 
 import com.jackelliott.ecommerceapp.cart.ShoppingCartFragment
+import com.jackelliott.ecommerceapp.core.ProductModule
 import dagger.Subcomponent
 
 @ProductScope

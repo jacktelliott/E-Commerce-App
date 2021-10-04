@@ -1,7 +1,9 @@
 package com.jackelliott.ecommerceapp.core
 
-import com.jackelliott.ecommerceapp.database.product.ProductRepository
-import com.jackelliott.ecommerceapp.database.product.ProductRepositoryImpl
+import com.jackelliott.ecommerceapp.database.product.cart.CartRepository
+import com.jackelliott.ecommerceapp.database.product.cart.CartRepositoryImpl
+import com.jackelliott.ecommerceapp.database.product.store.ProductRepository
+import com.jackelliott.ecommerceapp.database.product.store.ProductRepositoryImpl
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductCacheDataSource
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductLocalDataSource
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductRemoteDataSource
@@ -23,6 +25,16 @@ class RepositoryModule {
             productRemoteDataSource,
             productLocalDataSource,
             productCacheDataSource
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideCartRepository(
+        productLocalDataSource: ProductLocalDataSource
+    ): CartRepository {
+        return CartRepositoryImpl(
+            productLocalDataSource
         )
     }
 

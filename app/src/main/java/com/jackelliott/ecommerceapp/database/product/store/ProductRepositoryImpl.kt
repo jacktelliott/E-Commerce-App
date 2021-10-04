@@ -1,6 +1,7 @@
-package com.jackelliott.ecommerceapp.database.product
+package com.jackelliott.ecommerceapp.database.product.store
 
 import android.util.Log
+import com.jackelliott.ecommerceapp.database.product.Product
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductCacheDataSource
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductLocalDataSource
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductRemoteDataSource

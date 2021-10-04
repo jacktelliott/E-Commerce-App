@@ -25,4 +25,18 @@ class ProductLocalDataSourceImpl @Inject constructor(private val productDao: Pro
         }
     }
 
+    override suspend fun addProduct(product: Product) {
+        CoroutineScope(Dispatchers.IO).launch {
+            product.quantity.plus(1)
+            productDao.addProduct(product)
+        }
+    }
+
+    override suspend fun removeProduct(product: Product) {
+        CoroutineScope(Dispatchers.IO).launch {
+            product.quantity.minus(1)
+            productDao.removeProduct(product)
+        }
+    }
+
 }

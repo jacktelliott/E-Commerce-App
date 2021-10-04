@@ -15,4 +15,10 @@ interface ProductDAO {
 
     @Query("SELECT * FROM product_data_table")
     fun getAllProducts(): List<Product>
+
+    @Update
+    fun addProduct(product: Product)
+
+    @Update
+    fun removeProduct(product: Product)
 }

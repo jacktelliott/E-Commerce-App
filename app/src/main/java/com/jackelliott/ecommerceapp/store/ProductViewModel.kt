@@ -2,8 +2,8 @@ package com.jackelliott.ecommerceapp.store
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.jackelliott.ecommerceapp.database.product.GetProductUseCase
-import com.jackelliott.ecommerceapp.database.product.UpdateProductsUseCase
+import com.jackelliott.ecommerceapp.database.product.store.GetProductUseCase
+import com.jackelliott.ecommerceapp.database.product.store.UpdateProductsUseCase
 
 class ProductViewModel(
     private val getProductUseCase: GetProductUseCase,

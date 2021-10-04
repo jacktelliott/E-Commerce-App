@@ -21,7 +21,7 @@ abstract class ProductDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         ProductDatabase::class.java,
-                        "product_data_database"
+                        "product_data_table"
                     ).build()
                 }
                 return instance

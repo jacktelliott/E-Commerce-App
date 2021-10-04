@@ -10,8 +10,11 @@
         <entry key="..\:/Users/Jack Elliott/AndroidStudioProjects/ECommerceApp/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Jack Elliott/AndroidStudioProjects/ECommerceApp/app/src/main/res/layout/fragment_offers.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Jack Elliott/AndroidStudioProjects/ECommerceApp/app/src/main/res/layout/fragment_shopping_cart.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Jack Elliott/AndroidStudioProjects/ECommerceApp/app/src/main/res/layout/fragment_store.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/Jack Elliott/AndroidStudioProjects/ECommerceApp/app/src/main/res/layout/fragment_user_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Jack Elliott/AndroidStudioProjects/ECommerceApp/app/src/main/res/layout/item_book.xml" value="0.33" />
+        <entry key="..\:/Users/Jack Elliott/AndroidStudioProjects/ECommerceApp/app/src/main/res/layout/item_cart.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Jack Elliott/AndroidStudioProjects/ECommerceApp/app/src/main/res/layout/item_product.xml" value="0.32407407407407407" />
         <entry key="..\:/Users/Jack Elliott/AndroidStudioProjects/ECommerceApp/app/src/main/res/menu/bottom_nav.xml" value="0.251953125" />
       </map>
     </option>

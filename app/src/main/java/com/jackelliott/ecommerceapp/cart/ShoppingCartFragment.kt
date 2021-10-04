@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.jackelliott.ecommerceapp.App
 import com.jackelliott.ecommerceapp.databinding.FragmentShoppingCartBinding
 import com.jackelliott.ecommerceapp.store.ProductViewModel
@@ -16,8 +17,8 @@ import javax.inject.Inject
 class ShoppingCartFragment : Fragment() {
 
     private lateinit var binding: FragmentShoppingCartBinding
-    private lateinit var productViewModel: ProductViewModel
-    @Inject lateinit var factory: ProductViewModelFactory
+    private lateinit var cartViewModel: CartViewModel
+    @Inject lateinit var cartFactory: CartViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,15 +37,19 @@ class ShoppingCartFragment : Fragment() {
 //            .get(ProductViewModel::class.java)
 //        productViewModel.updateProduct().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
 //        })
-        val responseLiveData = productViewModel.getProduct()
-        responseLiveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            Log.i("ShoppingCartFragment", it.toString())
-        })
+
+
 
         return binding.root
     }
 
     private fun setupList() {
+        var recyclerView: RecyclerView = binding.recyclerViewShoppingCart
+
+        (activity?.application as App).appComponent
+            .scInject(this)
+        cartViewModel= ViewModelProvider(this, cartFactory)
+            .get(CartViewModel::class.java)
     }
 
 }

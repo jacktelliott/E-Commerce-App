@@ -1,5 +1,6 @@
 package com.jackelliott.ecommerceapp.core
 
+import com.jackelliott.ecommerceapp.cart.ShoppingCartFragment
 import com.jackelliott.ecommerceapp.store.StoreFragment
 import dagger.Component
 import javax.inject.Singleton
@@ -7,7 +8,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
-//        AndroidInjectionModule::class,
         AppModule::class,
         FactoryModule::class,
         NetModule::class,
@@ -23,7 +23,8 @@ interface AppComponent {
 
 //    fun productSubComponent(): ProductSubComponent.Factory
 
-    fun scInject(fragment: StoreFragment)
+    fun sInject(fragment: StoreFragment)
+    fun scInject(fragment: ShoppingCartFragment)
 
 //    @Component.Builder
 //    interface Builder {

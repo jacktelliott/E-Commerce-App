@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.jackelliott.ecommerceapp.App
 import com.jackelliott.ecommerceapp.R
+import com.jackelliott.ecommerceapp.cart.CartViewModel
+import com.jackelliott.ecommerceapp.cart.CartViewModelFactory
 import com.jackelliott.ecommerceapp.databinding.FragmentStoreBinding
 import com.jackelliott.ecommerceapp.databinding.ItemProductBinding
 import javax.inject.Inject
@@ -16,9 +18,13 @@ import javax.inject.Inject
 class StoreFragment : Fragment(){
 
     private lateinit var binding: FragmentStoreBinding
+    private lateinit var recyclerView: RecyclerView
     private lateinit var productViewModel: ProductViewModel
+    private lateinit var cartViewModel: CartViewModel
     @Inject
-    lateinit var factory: ProductViewModelFactory
+    lateinit var productFactory: ProductViewModelFactory
+    @Inject
+    lateinit var cartFactory: CartViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,29 +32,20 @@ class StoreFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentStoreBinding.inflate(inflater, container, false)
+        recyclerView = binding.recyclerViewStore
+        val view:View = LayoutInflater.from(container?.context).inflate(R.layout.item_product, container, false)
+        var binding: ItemProductBinding = ItemProductBinding.bind(view)
         setupView()
-        setupOnClickListener(container)
+        recyclerView.adapter = productViewModel.getProduct().value?.let { ProductEntryAdapter(it, context) }
         return binding.root
     }
 
-    private fun setupOnClickListener(container: ViewGroup?) {
-        val view:View = LayoutInflater.from(container?.context).inflate(R.layout.item_product, container, false)
-        var binding: ItemProductBinding = ItemProductBinding.bind(view)
-
-    }
-
     private fun setupView() {
-        var recyclerView: RecyclerView = binding.recyclerViewBookStore
-//        recyclerView.adapter = ProductEntryAdapter()
-
         (activity?.application as App).appComponent
-            .scInject(this)
-        productViewModel= ViewModelProvider(this, factory)
+            .sInject(this)
+        productViewModel= ViewModelProvider(this, productFactory)
             .get(ProductViewModel::class.java)
-        productViewModel.updateProduct().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            //display the products
-            recyclerView.adapter = it?.let { it1 -> ProductEntryAdapter(it1) }
-        })
+        productViewModel.updateProduct()
     }
 
 }

@@ -1,9 +1,12 @@
 package com.jackelliott.ecommerceapp.database.product
 
+import android.graphics.drawable.Drawable
 import android.media.Image
+import androidx.annotation.DrawableRes
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.InputStream
 
 @Entity(tableName = "product_data_table")
 data class Product (
@@ -25,8 +28,11 @@ data class Product (
 //    val category: String,
 
     @ColumnInfo (name = "image")
-    val image: Int,
+    val image: String,
 
     @ColumnInfo (name = "rating")
-    val rating: Float
+    val rating: Float,
+
+    @ColumnInfo (name = "quantity")
+    val quantity: Int = 0
         )

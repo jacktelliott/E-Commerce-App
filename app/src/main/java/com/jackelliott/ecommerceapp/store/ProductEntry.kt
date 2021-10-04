@@ -7,7 +7,7 @@ class ProductEntry(
     var description: String,
     var rating: Float,
     var price: Float,
-    @DrawableRes var image: Int
+    var image: String
 ) {
 
 }

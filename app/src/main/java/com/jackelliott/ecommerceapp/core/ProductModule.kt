@@ -1,8 +1,9 @@
-package com.jackelliott.ecommerceapp
+package com.jackelliott.ecommerceapp.core
 
+import com.jackelliott.ecommerceapp.ProductScope
 import com.jackelliott.ecommerceapp.store.ProductViewModelFactory
-import com.jackelliott.ecommerceapp.database.product.GetProductUseCase
-import com.jackelliott.ecommerceapp.database.product.UpdateProductsUseCase
+import com.jackelliott.ecommerceapp.database.product.store.GetProductUseCase
+import com.jackelliott.ecommerceapp.database.product.store.UpdateProductsUseCase
 import dagger.Module
 import dagger.Provides
 

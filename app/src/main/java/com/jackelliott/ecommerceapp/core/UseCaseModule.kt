@@ -1,8 +1,12 @@
 package com.jackelliott.ecommerceapp.core
 
-import com.jackelliott.ecommerceapp.database.product.GetProductUseCase
-import com.jackelliott.ecommerceapp.database.product.ProductRepository
-import com.jackelliott.ecommerceapp.database.product.UpdateProductsUseCase
+import com.jackelliott.ecommerceapp.database.product.Product
+import com.jackelliott.ecommerceapp.database.product.cart.AddProductUseCase
+import com.jackelliott.ecommerceapp.database.product.cart.CartRepository
+import com.jackelliott.ecommerceapp.database.product.cart.RemoveProductUseCase
+import com.jackelliott.ecommerceapp.database.product.store.GetProductUseCase
+import com.jackelliott.ecommerceapp.database.product.store.ProductRepository
+import com.jackelliott.ecommerceapp.database.product.store.UpdateProductsUseCase
 import dagger.Module
 import dagger.Provides
 
@@ -17,5 +21,15 @@ class UseCaseModule {
     @Provides
     fun providesUpdateProductUseCase(productRepository: ProductRepository): UpdateProductsUseCase {
         return UpdateProductsUseCase(productRepository)
+    }
+
+    @Provides
+    fun provideAddProductUseCase(cartRepository: CartRepository): AddProductUseCase {
+        return AddProductUseCase(cartRepository)
+    }
+
+    @Provides
+    fun provideRemoveProductUseCase(cartRepository: CartRepository): RemoveProductUseCase {
+        return RemoveProductUseCase(cartRepository)
     }
 }

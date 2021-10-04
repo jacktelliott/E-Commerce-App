@@ -1,4 +1,6 @@
-package com.jackelliott.ecommerceapp.database.product
+package com.jackelliott.ecommerceapp.database.product.store
+
+import com.jackelliott.ecommerceapp.database.product.Product
 
 interface ProductRepository {
     suspend fun getProducts(): List<Product>?
