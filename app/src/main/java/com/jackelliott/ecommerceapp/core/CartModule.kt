@@ -1,8 +1,8 @@
 package com.jackelliott.ecommerceapp.core
 
-import com.jackelliott.ecommerceapp.ProductScope
-import com.jackelliott.ecommerceapp.cart.CartViewModelFactory
-import com.jackelliott.ecommerceapp.database.product.cart.AddProductUseCase
+import com.jackelliott.ecommerceapp.presentation.ProductScope
+import com.jackelliott.ecommerceapp.presentation.cart.CartViewModelFactory
+import com.jackelliott.ecommerceapp.database.product.cart.GetProductsInCartUseCase
 import com.jackelliott.ecommerceapp.database.product.cart.RemoveProductUseCase
 import dagger.Module
 import dagger.Provides
@@ -13,12 +13,12 @@ class CartModule {
     @ProductScope
     @Provides
     fun provideCartViewModelFactory(
-        addProductUseCase: AddProductUseCase,
-        removeProductUseCase: RemoveProductUseCase
+        removeProductUseCase: RemoveProductUseCase,
+        getProductsInCartUseCase: GetProductsInCartUseCase
     ): CartViewModelFactory {
         return CartViewModelFactory(
-            addProductUseCase,
-            removeProductUseCase
+            removeProductUseCase,
+            getProductsInCartUseCase
         )
     }
 

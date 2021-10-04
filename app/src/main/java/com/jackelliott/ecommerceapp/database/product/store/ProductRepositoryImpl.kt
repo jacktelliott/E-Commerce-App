@@ -29,6 +29,16 @@ class ProductRepositoryImpl @Inject constructor(
         return newListOfProduct
     }
 
+    override suspend fun addProduct(product: Product): List<Product> {
+        try {
+            productLocalDataSource.addProduct(product)
+        } catch (exception: Exception) {
+            Log.i("addProduct", exception.message.toString())
+        }
+        return returnList(product)
+    }
+
+    fun returnList(product: Product): List<Product> = listOf(product)
 
     suspend fun getProductsFromAPI(): List<Product> {
         var productList: List<Product> = arrayListOf()

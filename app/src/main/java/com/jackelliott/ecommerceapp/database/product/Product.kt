@@ -34,5 +34,5 @@ data class Product (
 //    val rating: Float,
 
     @ColumnInfo (name = "quantity")
-    val quantity: Int = 0
+    var quantity: Int = 0
         )

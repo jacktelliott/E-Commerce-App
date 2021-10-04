@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp.profile
+package com.jackelliott.ecommerceapp.presentation.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

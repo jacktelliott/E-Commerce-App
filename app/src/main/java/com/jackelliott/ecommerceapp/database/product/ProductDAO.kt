@@ -7,7 +7,7 @@ import androidx.room.*
 @Dao
 interface ProductDAO {
 
-    @Update
+    @Insert
     suspend fun saveProducts(products: List<Product>)
 
     @Query("DELETE FROM product_data_table")

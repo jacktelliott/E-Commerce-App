@@ -1,8 +1,8 @@
 package com.jackelliott.ecommerceapp.core
 
-import com.jackelliott.ecommerceapp.database.product.Product
-import com.jackelliott.ecommerceapp.database.product.cart.AddProductUseCase
+import com.jackelliott.ecommerceapp.database.product.store.AddProductUseCase
 import com.jackelliott.ecommerceapp.database.product.cart.CartRepository
+import com.jackelliott.ecommerceapp.database.product.cart.GetProductsInCartUseCase
 import com.jackelliott.ecommerceapp.database.product.cart.RemoveProductUseCase
 import com.jackelliott.ecommerceapp.database.product.store.GetProductUseCase
 import com.jackelliott.ecommerceapp.database.product.store.ProductRepository
@@ -24,12 +24,17 @@ class UseCaseModule {
     }
 
     @Provides
-    fun provideAddProductUseCase(cartRepository: CartRepository): AddProductUseCase {
-        return AddProductUseCase(cartRepository)
+    fun provideAddProductUseCase(productRepository: ProductRepository): AddProductUseCase {
+        return AddProductUseCase(productRepository)
     }
 
     @Provides
     fun provideRemoveProductUseCase(cartRepository: CartRepository): RemoveProductUseCase {
         return RemoveProductUseCase(cartRepository)
+    }
+
+    @Provides
+    fun provideGetProductsInCartUseCase(cartRepository: CartRepository): GetProductsInCartUseCase {
+        return GetProductsInCartUseCase(cartRepository)
     }
 }

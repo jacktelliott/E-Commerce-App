@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp
+package com.jackelliott.ecommerceapp.presentation
 
 import javax.inject.Scope
 

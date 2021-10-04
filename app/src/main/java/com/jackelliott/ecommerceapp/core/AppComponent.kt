@@ -1,7 +1,7 @@
 package com.jackelliott.ecommerceapp.core
 
-import com.jackelliott.ecommerceapp.cart.ShoppingCartFragment
-import com.jackelliott.ecommerceapp.store.StoreFragment
+import com.jackelliott.ecommerceapp.presentation.cart.ShoppingCartFragment
+import com.jackelliott.ecommerceapp.presentation.store.StoreFragment
 import dagger.Component
 import javax.inject.Singleton
 

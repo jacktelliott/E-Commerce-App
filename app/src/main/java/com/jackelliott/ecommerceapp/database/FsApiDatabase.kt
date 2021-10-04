@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp
+package com.jackelliott.ecommerceapp.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

@@ -1,10 +1,11 @@
-package com.jackelliott.ecommerceapp.store
+package com.jackelliott.ecommerceapp.presentation.store
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.jackelliott.ecommerceapp.database.product.Product
+import com.jackelliott.ecommerceapp.database.product.store.AddProductUseCase
 import com.jackelliott.ecommerceapp.database.product.store.GetProductUseCase
 import com.jackelliott.ecommerceapp.database.product.store.UpdateProductsUseCase
 import kotlinx.coroutines.Dispatchers
@@ -12,8 +13,10 @@ import kotlinx.coroutines.launch
 
 class ProductViewModel(
     private val getProductUseCase: GetProductUseCase,
-    private val updateProductsUseCase: UpdateProductsUseCase
+    private val updateProductsUseCase: UpdateProductsUseCase,
+    private val addProductUseCase: AddProductUseCase
 ) : ViewModel() {
+
     private val productsResults: MutableLiveData<List<Product>> = MutableLiveData()
 
     fun getProduct(): MutableLiveData<List<Product>> {
@@ -29,5 +32,13 @@ class ProductViewModel(
             val productList = updateProductsUseCase.execute()
             emit(productList)
         }
+    }
+
+    fun addProduct(product: Product): MutableLiveData<List<Product>> {
+        viewModelScope.launch(Dispatchers.IO) {
+            val productList = addProductUseCase.execute(product)
+            productsResults.postValue(productList!!)
+        }
+        return productsResults
     }
 }

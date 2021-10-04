@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp
+package com.jackelliott.ecommerceapp.database
 
 import android.app.Application
 import com.jackelliott.ecommerceapp.core.*

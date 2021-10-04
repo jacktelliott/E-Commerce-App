@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp.profile
+package com.jackelliott.ecommerceapp.presentation.profile
 
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData

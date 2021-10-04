@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp
+package com.jackelliott.ecommerceapp.presentation
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
@@ -6,11 +6,12 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.commit
 import com.google.android.material.navigation.NavigationBarView
-import com.jackelliott.ecommerceapp.cart.ShoppingCartFragment
+import com.jackelliott.ecommerceapp.R
+import com.jackelliott.ecommerceapp.presentation.cart.ShoppingCartFragment
 import com.jackelliott.ecommerceapp.databinding.ActivityMainBinding
-import com.jackelliott.ecommerceapp.profile.ProfileViewModel
-import com.jackelliott.ecommerceapp.profile.UserProfileFragment
-import com.jackelliott.ecommerceapp.store.StoreFragment
+import com.jackelliott.ecommerceapp.presentation.profile.ProfileViewModel
+import com.jackelliott.ecommerceapp.presentation.profile.UserProfileFragment
+import com.jackelliott.ecommerceapp.presentation.store.StoreFragment
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 

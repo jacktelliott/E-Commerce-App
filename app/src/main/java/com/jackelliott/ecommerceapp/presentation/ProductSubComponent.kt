@@ -1,6 +1,6 @@
-package com.jackelliott.ecommerceapp
+package com.jackelliott.ecommerceapp.presentation
 
-import com.jackelliott.ecommerceapp.cart.ShoppingCartFragment
+import com.jackelliott.ecommerceapp.presentation.cart.ShoppingCartFragment
 import com.jackelliott.ecommerceapp.core.ProductModule
 import dagger.Subcomponent
 

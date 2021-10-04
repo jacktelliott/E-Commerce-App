@@ -12,14 +12,6 @@ import javax.inject.Inject
 class CartRepositoryImpl @Inject constructor(
     private val productLocalDataSource: ProductLocalDataSource
 ) : CartRepository {
-    override suspend fun addProduct(product: Product): List<Product> {
-        try {
-            productLocalDataSource.addProduct(product)
-        } catch (exception: Exception) {
-            Log.i("addProduct", exception.message.toString())
-        }
-        return returnList(product)
-    }
 
     override suspend fun removeProduct(product: Product): List<Product> {
         try {
@@ -30,6 +22,42 @@ class CartRepositoryImpl @Inject constructor(
         return returnList(product)
     }
 
-    suspend fun returnList(product: Product): List<Product> = listOf(product)
+    override suspend fun getProductsInCart(): MutableList<Product>? {
+        var allProducts: List<Product> = getProductsFromCache()
+        var productsInCart: MutableList<Product> = mutableListOf()
+        for (product in allProducts) {
+            if (product.quantity > 0) {
+                productsInCart.add(product)
+            }
+        }
+        return productsInCart
+    }
 
+    fun returnList(product: Product): List<Product> = listOf(product)
+
+    suspend fun getProductsFromCache(): List<Product> {
+        var productList: List<Product> = arrayListOf()
+        try {
+            productList = getProductsFromDB()//productCacheDataSource.getProductsFromCache()
+            if (productList.isNotEmpty()) {
+                return productList
+            }
+        } catch (exception: Exception) {
+            Log.i("getProductsFromCache", exception.message.toString())
+        }
+        return productList
+    }
+
+    suspend fun getProductsFromDB(): List<Product> {
+        var productList: List<Product> = arrayListOf()
+        try {
+            productList = productLocalDataSource.getProductsFromDB()
+            if (productList.isNotEmpty()) {
+                return productList
+            }
+        } catch (exception: Exception) {
+            Log.i("getProductsFromDB", exception.message.toString())
+        }
+        return productList
+    }
 }
