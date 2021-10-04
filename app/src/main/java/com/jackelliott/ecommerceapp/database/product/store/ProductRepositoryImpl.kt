@@ -31,53 +31,53 @@ class ProductRepositoryImpl @Inject constructor(
 
 
     suspend fun getProductsFromAPI(): List<Product> {
-        lateinit var productList: List<Product>
+        var productList: List<Product> = arrayListOf()
         try {
             val response = productRemoteDataSource.getProducts()
             val body = response.body()
             if (body != null) {
                 productList = body.products
             }
+            if (productList.isNotEmpty()) {
+                return productList
+            } else {
+                productList = getProductsFromDB()
+                productLocalDataSource.saveProductsToDB(productList)
+            }
         } catch (exception: Exception) {
             Log.i("getProductsFromAPI", exception.message.toString())
-        }
-        if (productList.size > 0) {
-            return productList
-        } else {
-            productList = getProductsFromDB()
-            productLocalDataSource.saveProductsToDB(productList)
         }
         return productList
     }
 
     suspend fun getProductsFromCache(): List<Product> {
-        lateinit var productList: List<Product>
+        var productList: List<Product> = arrayListOf()
         try {
-            productList = productCacheDataSource.getProductsFromCache()
+            productList = getProductsFromDB()//productCacheDataSource.getProductsFromCache()
+            if (productList.isNotEmpty()) {
+                return productList
+            } else {
+                productList = getProductsFromAPI()
+                productCacheDataSource.saveProductsToCache(productList)
+            }
         } catch (exception: Exception) {
             Log.i("getProductsFromCache", exception.message.toString())
-        }
-        if (productList.size > 0) {
-            return productList
-        } else {
-            productList = getProductsFromDB()
-            productCacheDataSource.saveProductsToCache(productList)
         }
         return productList
     }
 
     suspend fun getProductsFromDB(): List<Product> {
-        lateinit var productList: List<Product>
+        var productList: List<Product> = arrayListOf()
         try {
             productList = productLocalDataSource.getProductsFromDB()
+            if (productList.isNotEmpty()) {
+                return productList
+            } else {
+                productList = getProductsFromDB()
+                productLocalDataSource.saveProductsToDB(productList)
+            }
         } catch (exception: Exception) {
             Log.i("getProductsFromDB", exception.message.toString())
-        }
-        if (productList.size > 0) {
-            return productList
-        } else {
-            productList = getProductsFromDB()
-            productLocalDataSource.saveProductsToDB(productList)
         }
         return productList
     }

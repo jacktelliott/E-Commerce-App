@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 class StoreFragment : Fragment(){
 
-    private lateinit var binding: FragmentStoreBinding
+    private lateinit var storeBinding: FragmentStoreBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var productViewModel: ProductViewModel
     private lateinit var cartViewModel: CartViewModel
@@ -31,13 +31,21 @@ class StoreFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentStoreBinding.inflate(inflater, container, false)
-        recyclerView = binding.recyclerViewStore
-        val view:View = LayoutInflater.from(container?.context).inflate(R.layout.item_product, container, false)
-        var binding: ItemProductBinding = ItemProductBinding.bind(view)
+        val view:View = LayoutInflater.from(container?.context).inflate(R.layout.fragment_store, container, false)
+        storeBinding = FragmentStoreBinding.bind(view)
+        return storeBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupView()
-        recyclerView.adapter = productViewModel.getProduct().value?.let { ProductEntryAdapter(it, context) }
-        return binding.root
+        recyclerView = storeBinding.root
+        productViewModel.getProduct().observe(viewLifecycleOwner, {
+            if (it!!.isNotEmpty()) {
+                recyclerView.adapter = ProductEntryAdapter(it!!, context)
+            }
+        })
+//        recyclerView.adapter = productViewModel.getProduct().value?.let { ProductEntryAdapter(it, context) }
     }
 
     private fun setupView() {
