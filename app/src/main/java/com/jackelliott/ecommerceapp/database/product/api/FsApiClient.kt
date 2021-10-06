@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp.database
+package com.jackelliott.ecommerceapp.database.product.api
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

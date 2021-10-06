@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.jackelliott.ecommerceapp.database.App
+import com.jackelliott.ecommerceapp.database.product.api.App
 import com.jackelliott.ecommerceapp.R
 import com.jackelliott.ecommerceapp.presentation.cart.CartViewModel
 import com.jackelliott.ecommerceapp.presentation.cart.CartViewModelFactory
-import com.jackelliott.ecommerceapp.presentation.cart.ShoppingCartFragment
 import com.jackelliott.ecommerceapp.databinding.FragmentStoreBinding
 import javax.inject.Inject
 
@@ -41,6 +40,9 @@ class StoreFragment : Fragment(){
         setupViewModel()
         recyclerView = binding.root
         productViewModel.getProduct().observe(viewLifecycleOwner, {
+            if (it.isEmpty()){
+                productViewModel.updateProduct()
+            }
             if (it!!.isNotEmpty()) {
                 recyclerView.adapter = ProductAdapter(it!!, context, productViewModel)
             }
@@ -53,7 +55,7 @@ class StoreFragment : Fragment(){
             .sInject(this)
         productViewModel= ViewModelProvider(this, productFactory)
             .get(ProductViewModel::class.java)
-        productViewModel.updateProduct()
+//        productViewModel.updateProduct()
     }
 
 }

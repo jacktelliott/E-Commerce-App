@@ -1,6 +1,7 @@
 package com.jackelliott.ecommerceapp.presentation.cart
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,10 @@ import java.text.DecimalFormat
 class CartAdapter(
     private val productList: List<Product>,
     private val context: Context?,
-    private val cartViewModel: CartViewModel
+    private val cartViewModel: CartViewModel,
+    private val shoppingCartFragment: ShoppingCartFragment,
+    private val view: View,
+    private val savedInstanceState: Bundle?
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
@@ -26,7 +30,14 @@ class CartAdapter(
     }
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-        holder.bind(productList[position], context, cartViewModel)
+        holder.bind(
+            productList[position],
+            context,
+            cartViewModel,
+            shoppingCartFragment,
+            view,
+            savedInstanceState
+        )
     }
 
     override fun getItemCount(): Int {
@@ -37,7 +48,14 @@ class CartAdapter(
 
         private var binding: ItemCartBinding = ItemCartBinding.bind(cartView)
 
-        fun bind(product: Product, context: Context?, cartViewModel: CartViewModel) {
+        fun bind(
+            product: Product,
+            context: Context?,
+            cartViewModel: CartViewModel,
+            shoppingCartFragment: ShoppingCartFragment,
+            view: View,
+            savedInstanceState: Bundle?
+        ) {
             binding.textViewTitle.text = product.title
             binding.textViewDescription.text = product.description
 //            binding.ratingBarProduct.rating = product.rating
@@ -46,9 +64,13 @@ class CartAdapter(
             binding.textViewPrice.text = "$$roundedPrice"
             context?.let { Glide.with(it).load(product.image).into(binding.imageViewProduct) }
             binding.imageButtonRemoveFromCart.setOnClickListener {
-                product.quantity--
-                cartViewModel.removeProduct(product)
-                Toast.makeText(context, "${product.title} removed from cart", Toast.LENGTH_LONG).show()
+                if (product.quantity > 0) {
+                    product.quantity--
+                    cartViewModel.removeProduct(product)
+                    Toast.makeText(context, "${product.title} removed from cart", Toast.LENGTH_LONG)
+                        .show()
+                    shoppingCartFragment.onViewCreated(view, savedInstanceState)
+                }
             }
         }
     }

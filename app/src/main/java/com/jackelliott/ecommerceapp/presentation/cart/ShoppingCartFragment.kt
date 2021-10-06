@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.jackelliott.ecommerceapp.database.App
+import com.jackelliott.ecommerceapp.database.product.api.App
 import com.jackelliott.ecommerceapp.R
 import com.jackelliott.ecommerceapp.databinding.FragmentShoppingCartBinding
 import javax.inject.Inject
@@ -17,15 +17,18 @@ class ShoppingCartFragment : Fragment() {
     private lateinit var binding: FragmentShoppingCartBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var cartViewModel: CartViewModel
-    @Inject lateinit var cartFactory: CartViewModelFactory
+
+    @Inject
+    lateinit var cartFactory: CartViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view:View = LayoutInflater.from(container?.context).inflate(R.layout.fragment_shopping_cart, container, false)
-        //binding = FragmentShoppingCartBinding.inflate(inflater, container, false)
+        val view: View = LayoutInflater.from(container?.context)
+            .inflate(R.layout.fragment_shopping_cart, container, false)
+//        binding = FragmentShoppingCartBinding.inflate(inflater, container, false)
         binding = FragmentShoppingCartBinding.bind(view)
         return binding.root
     }
@@ -33,10 +36,17 @@ class ShoppingCartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViewModel()
-        recyclerView= binding.recyclerViewShoppingCart
+        recyclerView = binding.recyclerViewShoppingCart
         cartViewModel.getProductsInCart().observe(viewLifecycleOwner, {
             if (it!!.isNotEmpty()) {
-                recyclerView.adapter = CartAdapter(it!!, context, cartViewModel)
+                recyclerView.adapter = CartAdapter(
+                    it,
+                    context,
+                    cartViewModel,
+                    this,
+                    view,
+                    savedInstanceState
+                )
             }
         })
     }
@@ -44,7 +54,7 @@ class ShoppingCartFragment : Fragment() {
     private fun setupViewModel() {
         (activity?.application as App).appComponent
             .scInject(this)
-        cartViewModel= ViewModelProvider(this, cartFactory)
+        cartViewModel = ViewModelProvider(this, cartFactory)
             .get(CartViewModel::class.java)
     }
 

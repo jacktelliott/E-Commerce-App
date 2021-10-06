@@ -17,12 +17,10 @@ class CartViewModel(
 
     private val productsResults: MutableLiveData<List<Product>> = MutableLiveData()
 
-    fun removeProduct(product: Product): MutableLiveData<List<Product>> {
+    fun removeProduct(product: Product) {
         viewModelScope.launch(Dispatchers.IO) {
-            val productList = removeProductUseCase.execute(product)
-            productsResults.postValue(productList!!)
+            removeProductUseCase.execute(product)
         }
-        return productsResults
     }
 
     fun getProductsInCart(): MutableLiveData<List<Product>> {

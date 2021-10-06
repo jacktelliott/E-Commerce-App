@@ -1,8 +1,8 @@
-package com.jackelliott.ecommerceapp.core
+package com.jackelliott.ecommerceapp.database.product.core
 
 import android.app.Application
 import androidx.room.Room
-import com.jackelliott.ecommerceapp.database.FsApiDatabase
+import com.jackelliott.ecommerceapp.database.product.api.FsApiDatabase
 import com.jackelliott.ecommerceapp.database.product.ProductDAO
 import dagger.Module
 import dagger.Provides

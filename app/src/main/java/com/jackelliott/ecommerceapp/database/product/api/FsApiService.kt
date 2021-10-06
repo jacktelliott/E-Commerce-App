@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp.database
+package com.jackelliott.ecommerceapp.database.product.api
 
 import com.jackelliott.ecommerceapp.database.product.Product
 import retrofit2.Response

@@ -1,10 +1,7 @@
-package com.jackelliott.ecommerceapp.database
+package com.jackelliott.ecommerceapp.database.product.api
 
 import android.app.Application
-import com.jackelliott.ecommerceapp.core.*
-import com.jackelliott.ecommerceapp.database.RetrofitInstance
-import retrofit2.converter.gson.GsonConverterFactory.create
-import javax.inject.Inject
+import com.jackelliott.ecommerceapp.database.product.core.*
 
 class App :Application() {
 

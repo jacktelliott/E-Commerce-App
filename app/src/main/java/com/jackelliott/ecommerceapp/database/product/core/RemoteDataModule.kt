@@ -1,6 +1,6 @@
-package com.jackelliott.ecommerceapp.core
+package com.jackelliott.ecommerceapp.database.product.core
 
-import com.jackelliott.ecommerceapp.database.FsApiService
+import com.jackelliott.ecommerceapp.database.product.api.FsApiService
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductRemoteDataSource
 import com.jackelliott.ecommerceapp.database.product.datasource.impl.ProductRemoteDataSourceImpl
 import dagger.Module

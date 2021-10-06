@@ -1,6 +1,6 @@
 package com.jackelliott.ecommerceapp.database.product.datasource.impl
 
-import com.jackelliott.ecommerceapp.database.FsApiService
+import com.jackelliott.ecommerceapp.database.product.api.FsApiService
 import com.jackelliott.ecommerceapp.database.product.Product
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductRemoteDataSource
 import retrofit2.Response

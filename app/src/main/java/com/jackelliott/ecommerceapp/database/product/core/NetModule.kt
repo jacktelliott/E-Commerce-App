@@ -1,11 +1,9 @@
-package com.jackelliott.ecommerceapp.core
+package com.jackelliott.ecommerceapp.database.product.core
 
-import com.jackelliott.ecommerceapp.database.FsApiService
-import com.jackelliott.ecommerceapp.database.RetrofitInstance
+import com.jackelliott.ecommerceapp.database.product.api.FsApiService
+import com.jackelliott.ecommerceapp.database.product.api.RetrofitInstance
 import dagger.Module
 import dagger.Provides
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton

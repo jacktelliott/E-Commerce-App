@@ -1,7 +1,6 @@
-package com.jackelliott.ecommerceapp.database
+package com.jackelliott.ecommerceapp.database.product.api
 
 import com.google.gson.GsonBuilder
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

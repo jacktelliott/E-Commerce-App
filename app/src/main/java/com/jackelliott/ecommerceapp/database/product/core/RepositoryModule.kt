@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp.core
+package com.jackelliott.ecommerceapp.database.product.core
 
 import com.jackelliott.ecommerceapp.database.product.cart.CartRepository
 import com.jackelliott.ecommerceapp.database.product.cart.CartRepositoryImpl

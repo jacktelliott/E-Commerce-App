@@ -34,11 +34,9 @@ class ProductViewModel(
         }
     }
 
-    fun addProduct(product: Product): MutableLiveData<List<Product>> {
+    fun addProduct(product: Product) {
         viewModelScope.launch(Dispatchers.IO) {
-            val productList = addProductUseCase.execute(product)
-            productsResults.postValue(productList!!)
+            addProductUseCase.execute(product)
         }
-        return productsResults
     }
 }
