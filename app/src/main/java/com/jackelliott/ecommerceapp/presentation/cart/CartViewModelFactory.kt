@@ -13,6 +13,9 @@ class CartViewModelFactory @Inject constructor(
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return CartViewModel(removeProductUseCase, getProductsInCartUseCase) as T
+        return CartViewModel(
+            removeProductUseCase,
+            getProductsInCartUseCase
+        ) as T
     }
 }

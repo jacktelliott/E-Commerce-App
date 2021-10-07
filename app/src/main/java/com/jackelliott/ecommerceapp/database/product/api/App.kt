@@ -1,7 +1,7 @@
 package com.jackelliott.ecommerceapp.database.product.api
 
 import android.app.Application
-import com.jackelliott.ecommerceapp.database.product.core.*
+import com.jackelliott.ecommerceapp.core.*
 
 class App :Application() {
 

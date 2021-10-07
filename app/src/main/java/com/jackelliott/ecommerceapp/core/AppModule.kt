@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp.database.product.core
+package com.jackelliott.ecommerceapp.core
 
 import android.app.Application
 import dagger.Module

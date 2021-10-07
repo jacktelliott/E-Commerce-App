@@ -1,4 +1,4 @@
-package com.jackelliott.ecommerceapp.database.profile
+package com.jackelliott.ecommerceapp.database.profile.repository
 
 import com.jackelliott.ecommerceapp.database.profile.Subscriber
 import com.jackelliott.ecommerceapp.database.profile.SubscriberDAO
@@ -8,7 +8,7 @@ interface SubscriberRepository { //(private val dao: SubscriberDAO) {
     suspend fun addSubscriber(subscriber: Subscriber)
     suspend fun updateSubscriber(subscriber: Subscriber)
     suspend fun removeSubscriber(subscriber: Subscriber)
-
+    suspend fun login(email: String, password: String) : Boolean
 
 //    val subscribers = dao.getAllSubscribers()
 //

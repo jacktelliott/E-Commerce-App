@@ -5,10 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.jackelliott.ecommerceapp.R
-import com.jackelliott.ecommerceapp.database.profile.SubscriberDatabase
-import com.jackelliott.ecommerceapp.database.profile.SubscriberRepository
 import com.jackelliott.ecommerceapp.databinding.FragmentUserProfileBinding
 
 class UserProfileFragment : Fragment() {

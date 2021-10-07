@@ -8,7 +8,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class ProductLocalDataSourceImpl @Inject constructor(private val productDao: ProductDAO) : ProductLocalDataSource {
+class ProductLocalDataSourceImpl @Inject constructor(private val productDao: ProductDAO) :
+    ProductLocalDataSource {
     override suspend fun getProductsFromDB(): List<Product> {
         return productDao.getAllProducts()
     }
