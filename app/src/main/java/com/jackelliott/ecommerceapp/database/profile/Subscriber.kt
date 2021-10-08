@@ -5,18 +5,29 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "subscriber_data_table")
-data class Subscriber (
+data class Subscriber(
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "subscriber_id")
+    @ColumnInfo(name = "id")
     val id: Int,
 
-    @ColumnInfo (name = "subscriber_name")
+    @ColumnInfo(name = "name")
     val name: String,
 
-    @ColumnInfo (name = "subscriber_email")
+    @ColumnInfo(name = "email")
     val email: String,
 
-    @ColumnInfo (name = "subscriber_password")
-    val password: String
-        )
+    @ColumnInfo(name = "password")
+    val password: String,
+
+    @ColumnInfo(name = "number")
+    val number: String
+) {
+    constructor(name: String, email: String, password: String, number: String) : this(
+        0,
+        name,
+        email,
+        password,
+        number
+    )
+}

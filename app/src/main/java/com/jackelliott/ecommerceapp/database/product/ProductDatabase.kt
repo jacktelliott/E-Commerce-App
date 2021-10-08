@@ -1,31 +1,18 @@
 package com.jackelliott.ecommerceapp.database.product
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.jackelliott.ecommerceapp.database.product.Product
+import com.jackelliott.ecommerceapp.database.product.ProductDAO
 
-@Database(entities = [Product::class], version = 1)
+
+@Database(
+    entities = [Product::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class ProductDatabase : RoomDatabase() {
 
-    abstract val productDAO: ProductDAO
+    abstract fun productDao(): ProductDAO
 
-    companion object {
-
-        @Volatile
-        private var INSTANCE: ProductDatabase? = null
-        fun getInstance(context: Context): ProductDatabase {
-            synchronized(this) {
-                var instance = INSTANCE
-                if (instance == null) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        ProductDatabase::class.java,
-                        "product_data_table"
-                    ).build()
-                }
-                return instance
-            }
-        }
-    }
 }

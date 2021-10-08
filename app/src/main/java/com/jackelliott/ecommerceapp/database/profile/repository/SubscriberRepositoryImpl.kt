@@ -26,25 +26,41 @@ class SubscriberRepositoryImpl @Inject constructor(
         subscriberLocalDataSource.removeSubscriberFromDB(subscriber)
     }
 
-    override suspend fun login(email: String, password: String) : Boolean {
-        if (subscriberCacheDataSource.getSubscriber().email == email
-            && subscriberCacheDataSource.getSubscriber().password == password) {
-            return true
-        } else {
-            var subscribers: List<Subscriber> = getSubscribersFromCache()
-            for (subscriber in subscribers) {
-                if (subscriber.email == email && subscriber.password == password) {
-                    return true
-                }
+    override suspend fun login(email: String, password: String): Boolean {
+        var subscribers: List<Subscriber> = getSubscribersFromCache()
+        for (subscriber in subscribers) {
+            if (subscriber.email == email && subscriber.password == password) {
+                subscriberCacheDataSource.setLoggedIn(true)
+                return true
             }
-            return false
         }
+        return false
+    }
+
+    override suspend fun getLoggedInSubscriber(email: String, password: String): Subscriber {
+        var subscribers: List<Subscriber> = getSubscribersFromCache()
+        for (subscriber in subscribers) {
+            if (subscriber.email == email && subscriber.password == password) {
+                return subscriber
+            }
+        }
+        Log.i("getLoggedInSubscriber", "Logged in a subscriber that doesn't exist")
+        return Subscriber("", email, password, "")
+    }
+
+    override suspend fun logout() {
+        subscriberCacheDataSource.setLoggedIn(false)
+    }
+
+    override suspend fun loggedIn(): Boolean {
+        return subscriberCacheDataSource.getLoggedIn()
     }
 
     suspend fun getSubscribersFromCache(): List<Subscriber> {
         var subscriberList: List<Subscriber> = arrayListOf()
         try {
-            subscriberList = getSubscribersFromDB()//subscriberCacheDataSource.getSubscribersFromCache()
+            subscriberList =
+                getSubscribersFromDB()//subscriberCacheDataSource.getSubscribersFromCache()
             if (subscriberList.isNotEmpty()) {
                 return subscriberList
             }

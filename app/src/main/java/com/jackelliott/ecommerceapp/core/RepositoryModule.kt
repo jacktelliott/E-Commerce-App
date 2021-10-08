@@ -7,6 +7,10 @@ import com.jackelliott.ecommerceapp.database.product.store.ProductRepositoryImpl
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductCacheDataSource
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductLocalDataSource
 import com.jackelliott.ecommerceapp.database.product.datasource.ProductRemoteDataSource
+import com.jackelliott.ecommerceapp.database.profile.datasource.SubscriberCacheDataSource
+import com.jackelliott.ecommerceapp.database.profile.datasource.SubscriberLocalDataSource
+import com.jackelliott.ecommerceapp.database.profile.repository.SubscriberRepository
+import com.jackelliott.ecommerceapp.database.profile.repository.SubscriberRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -38,4 +42,15 @@ class RepositoryModule {
         )
     }
 
+    @Singleton
+    @Provides
+    fun provideProfileRepository(
+        subscriberLocalDataSource: SubscriberLocalDataSource,
+        subscriberCacheDataSource: SubscriberCacheDataSource
+    ) : SubscriberRepository {
+        return SubscriberRepositoryImpl(
+            subscriberLocalDataSource,
+            subscriberCacheDataSource
+        )
+    }
 }

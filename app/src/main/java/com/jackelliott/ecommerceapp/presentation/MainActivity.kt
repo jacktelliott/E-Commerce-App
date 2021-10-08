@@ -9,6 +9,7 @@ import com.google.android.material.navigation.NavigationBarView
 import com.jackelliott.ecommerceapp.R
 import com.jackelliott.ecommerceapp.presentation.cart.ShoppingCartFragment
 import com.jackelliott.ecommerceapp.databinding.ActivityMainBinding
+import com.jackelliott.ecommerceapp.presentation.profile.LoginFragment
 import com.jackelliott.ecommerceapp.presentation.profile.ProfileViewModel
 import com.jackelliott.ecommerceapp.presentation.profile.UserProfileFragment
 import com.jackelliott.ecommerceapp.presentation.store.StoreFragment
@@ -16,7 +17,7 @@ import com.jackelliott.ecommerceapp.presentation.store.StoreFragment
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var subscriberViewModel: ProfileViewModel
+//    private lateinit var subscriberViewModel: ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,12 +58,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
     private fun onProfileClicked() {
         supportFragmentManager.commit {
-            replace(R.id.frame_content, UserProfileFragment())
+            replace(R.id.frame_content, LoginFragment())
         }
-    }
-
-    fun getApplicaton() :Application {
-        return application
     }
 
 }

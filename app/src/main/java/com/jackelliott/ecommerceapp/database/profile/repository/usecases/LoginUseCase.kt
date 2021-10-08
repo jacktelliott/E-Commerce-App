@@ -1,5 +1,6 @@
-package com.jackelliott.ecommerceapp.database.profile.repository
+package com.jackelliott.ecommerceapp.database.profile.repository.usecases
 
+import com.jackelliott.ecommerceapp.database.profile.repository.SubscriberRepository
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(private val subscriberRepository: SubscriberRepository) {

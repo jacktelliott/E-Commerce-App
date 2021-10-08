@@ -2,16 +2,16 @@ package com.jackelliott.ecommerceapp.presentation.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.jackelliott.ecommerceapp.database.profile.repository.AddSubscriberUseCase
-import com.jackelliott.ecommerceapp.database.profile.repository.LoginUseCase
-import com.jackelliott.ecommerceapp.database.profile.repository.RemoveSubscriberUseCase
-import com.jackelliott.ecommerceapp.database.profile.repository.UpdateSubscriberUseCase
+import com.jackelliott.ecommerceapp.database.profile.repository.usecases.*
 
 class ProfileViewModelFactory(
     private val addSubscriberUseCase: AddSubscriberUseCase,
     private val removeSubscriberUseCase: RemoveSubscriberUseCase,
     private val updateSubscriberUseCase: UpdateSubscriberUseCase,
-    private val loginUseCase: LoginUseCase
+    private val loginUseCase: LoginUseCase,
+    private val getLoggedInSubscriberUseCase: GetLoggedInSubscriberUseCase,
+    private val logoutUseCase: LogoutUseCase,
+    private val loggedInUseCase: LoggedInUseCase
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -19,7 +19,10 @@ class ProfileViewModelFactory(
             addSubscriberUseCase,
             removeSubscriberUseCase,
             updateSubscriberUseCase,
-            loginUseCase
+            loginUseCase,
+            getLoggedInSubscriberUseCase,
+            logoutUseCase,
+            loggedInUseCase
         ) as T
     }
 

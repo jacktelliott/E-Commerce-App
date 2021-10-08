@@ -7,9 +7,7 @@ import com.jackelliott.ecommerceapp.database.product.cart.RemoveProductUseCase
 import com.jackelliott.ecommerceapp.presentation.store.ProductViewModelFactory
 import com.jackelliott.ecommerceapp.database.product.store.GetProductUseCase
 import com.jackelliott.ecommerceapp.database.product.store.UpdateProductsUseCase
-import com.jackelliott.ecommerceapp.database.profile.repository.AddSubscriberUseCase
-import com.jackelliott.ecommerceapp.database.profile.repository.RemoveSubscriberUseCase
-import com.jackelliott.ecommerceapp.database.profile.repository.UpdateSubscriberUseCase
+import com.jackelliott.ecommerceapp.database.profile.repository.usecases.*
 import com.jackelliott.ecommerceapp.presentation.profile.ProfileViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -42,12 +40,20 @@ class FactoryModule {
     fun providesProfileViewModelFactory(
         addSubscriberUseCase: AddSubscriberUseCase,
         removeSubscriberUseCase: RemoveSubscriberUseCase,
-        updateSubscriberUseCase: UpdateSubscriberUseCase
+        updateSubscriberUseCase: UpdateSubscriberUseCase,
+        loginUseCase: LoginUseCase,
+        getLoggedInSubscriberUseCase: GetLoggedInSubscriberUseCase,
+        logoutUseCase: LogoutUseCase,
+        loggedInUseCase: LoggedInUseCase
     ) : ProfileViewModelFactory {
         return ProfileViewModelFactory(
             addSubscriberUseCase,
             removeSubscriberUseCase,
-            updateSubscriberUseCase
+            updateSubscriberUseCase,
+            loginUseCase,
+            getLoggedInSubscriberUseCase,
+            logoutUseCase,
+            loggedInUseCase
         )
     }
 }

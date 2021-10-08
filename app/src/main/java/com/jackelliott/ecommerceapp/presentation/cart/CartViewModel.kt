@@ -1,8 +1,6 @@
 package com.jackelliott.ecommerceapp.presentation.cart
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.jackelliott.ecommerceapp.database.product.Product
 import com.jackelliott.ecommerceapp.database.product.store.AddProductUseCase
 import com.jackelliott.ecommerceapp.database.product.cart.GetProductsInCartUseCase
@@ -15,7 +13,7 @@ class CartViewModel(
     private val getProductsInCartUseCase: GetProductsInCartUseCase
 ) : ViewModel() {
 
-    private val productsResults: MutableLiveData<List<Product>> = MutableLiveData()
+    val productsResults: MutableLiveData<List<Product>> = MutableLiveData()
 
     fun removeProduct(product: Product) {
         viewModelScope.launch(Dispatchers.IO) {

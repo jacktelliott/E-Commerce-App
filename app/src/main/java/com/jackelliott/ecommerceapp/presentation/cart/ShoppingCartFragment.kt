@@ -47,6 +47,15 @@ class ShoppingCartFragment : Fragment() {
                     view,
                     savedInstanceState
                 )
+            } else {
+                recyclerView.adapter = CartAdapter(
+                    listOf(),
+                    context,
+                    cartViewModel,
+                    this,
+                    view,
+                    savedInstanceState
+                )
             }
         })
     }

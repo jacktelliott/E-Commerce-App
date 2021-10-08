@@ -44,7 +44,7 @@ class StoreFragment : Fragment(){
                 productViewModel.updateProduct()
             }
             if (it!!.isNotEmpty()) {
-                recyclerView.adapter = ProductAdapter(it!!, context, productViewModel)
+                recyclerView.adapter = ProductAdapter(it!!, this.context, productViewModel)
             }
         })
 //        recyclerView.adapter = productViewModel.getProduct().value?.let { ProductEntryAdapter(it, context) }

@@ -14,16 +14,9 @@ class NetModule {
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {
-//        var logging = HttpLoggingInterceptor()//
-//        logging.setLevel(HttpLoggingInterceptor.Level.BASIC)//
-//        var client = OkHttpClient.Builder()//
-//            .addInterceptor(logging)//
-//            .build()//
         return Retrofit.Builder()
-//            .baseUrl("https://api.domain.com")//
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(RetrofitInstance.BASE_URL)
-//            .client(client)//
             .build()
     }
 
