@@ -39,15 +39,15 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupViewModel()
-        profileViewModel.loggedIn().observe(viewLifecycleOwner, {
-            if (it) {
-                this.activity?.supportFragmentManager?.commit {
-                    replace(R.id.frame_content, UserProfileFragment(email, password))
-                }
-            } else {
-                setupButtonListeners()
-            }
-        })
+//        profileViewModel.loggedIn().observe(viewLifecycleOwner, {
+//            if (it) {
+//                this.activity?.supportFragmentManager?.commit {
+//                    replace(R.id.frame_content, UserProfileFragment(email, password))
+//                }
+//            } else {
+        setupButtonListeners()
+//            }
+//        })
     }
 
     private fun setupButtonListeners() {
